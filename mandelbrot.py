@@ -48,15 +48,15 @@ if __name__ == '__main__':
     
     
     
-    magnification = 200
+    magnification = 100
     
-    centreX = 0.25
+    centreX = -0.5
     centreY = 0
     
     radiusX = 1.5
     radiusY = 1
     
-    quality = 50
+    quality = 512
     
     lowX = centreX - radiusX
     highX= centreX + radiusX
@@ -95,13 +95,9 @@ if __name__ == '__main__':
             
             y=int((y-lowY)*(height)/(lowY-highY))+height
             
-            r=loops
-            if r>255:
-                r=255
-            g=loops-255
-            if g<0:
-                g=0
-            b=int((512 - loops)/2)
+            r=min(loops, 255)
+            g=max(loops-256, 0)
+            b=min(int(loops * 0.625), 255)
             
             
             pygame.draw.circle(screen, (r, g, b), (x, y), 1)
