@@ -50,8 +50,8 @@ if __name__ == '__main__':
     
     magnification = 200
     
-    centreX = 0
-    centreY = 1
+    centreX = 0.25
+    centreY = 0
     
     radiusX = 1.5
     radiusY = 1
@@ -70,12 +70,13 @@ if __name__ == '__main__':
     pygame.init()
     screen = pygame.display.set_mode([width, height], pygame.RESIZABLE)
     running = True
-    
+    font = pygame.font.SysFont(None, 24)
+
+
     
     
     mode = mode.centre
     while running:
-        print(f"{centreX},{centreY} z:{magnification}")
         screen.fill((0,0,0))
         lowX = centreX - radiusX
         highX= centreX + radiusX
@@ -104,10 +105,11 @@ if __name__ == '__main__':
             
             
             pygame.draw.circle(screen, (r, g, b), (x, y), 1)
+        pygame.draw.circle(screen, (0,255,0), ((int(width/2), int(height)/2)), 2)
+        img = font.render(f"({centreX},{centreY}) z:{magnification} {mode}", True, (0,0,0))
+        screen.blit(img, (20, 20))
         pygame.display.flip()
-        filename = f"images/{magnification}.jpg"
-        pygame.image.save(screen, filename)
-        magnification = int(magnification * 1.5)
+        print("update")
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
