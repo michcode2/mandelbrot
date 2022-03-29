@@ -95,14 +95,14 @@ if __name__ == '__main__':
             
             y=int((y-lowY)*(height)/(lowY-highY))+height
             
-            r=min(loops, 255)
-            g=max(loops-256, 0)
+            g=min(loops, 255)
+            r=max(loops-256, 0)
             b=min(int(loops * 0.625), 255)
             
             
             pygame.draw.circle(screen, (r, g, b), (x, y), 1)
         pygame.draw.circle(screen, (0,255,0), ((int(width/2), int(height)/2)), 2)
-        img = font.render(f"({centreX},{centreY}) z:{magnification} {mode}", True, (0,0,0))
+        img = font.render(f"({centreX},{centreY}) z:{magnification} {mode}", True, (0,255,0))
         screen.blit(img, (20, 20))
         pygame.display.flip()
         print("update")
